@@ -66,9 +66,10 @@
     
         <!-- Submit Button -->
         <div class="text-center">
-          <button type="submit" class="w-full py-3 mt-6 bg-indigo-600 text-white font-semibold rounded-lg shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-            Place Order with Cash on Delivery
-          </button>
+          <form method="POST" action="{% url 'place_order' %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-primary">Place Order</button>
+        </form>
         </div>
       </form>
     </div>

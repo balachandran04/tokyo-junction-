@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Product, Cart, CartItem, Order, OrderItem, Address, Wishlist,Category
+from .models import Product, Cart, CartItem, Order, OrderItem, Address, Wishlist,Category,Size
 
 # Admin interface for the Product model
 class ProductAdmin(admin.ModelAdmin):
@@ -8,7 +8,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_filter = ('price', 'stock')
 
 admin.site.register(Product, ProductAdmin)
-
+admin.site.register(Size)
 admin.site.register(Category    )
 # Admin interface for the CartItem model
 class CartItemAdmin(admin.TabularInline):

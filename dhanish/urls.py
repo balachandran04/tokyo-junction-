@@ -18,7 +18,8 @@ urlpatterns = [
     path('remove_from_wishlist/<int:wishlist_item_id>/', views.remove_from_wishlist, name='remove_from_wishlist'),  # Remove from wishlist
     path('add_address/', views.add_address, name='add_address'),  
     path('product_details/<int:id>/', views.product_details, name='product_details'),
-    path('order/<int:order_id>/status/', views.order_status, name='order_status')
+    path('order/<int:order_id>/status/', views.order_status, name='order_status'),
+    path('place_order', views.place_order, name='place_order'),
 # Add new address for user
 ]
 if settings.DEBUG:

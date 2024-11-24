@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-e^b^tw%dwuw-h!+%h$li=go+-_lbk=t%)c9apsj#@u&^4ig056
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -70,6 +70,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'toky_city.wsgi.application'
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'balachantran8@gmail.com'  
+EMAIL_HOST_PASSWORD = 'afagjjmamouurgpf' 
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases

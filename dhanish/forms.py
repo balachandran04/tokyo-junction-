@@ -1,6 +1,20 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
+from .models import Product, Size
+
+
+
+from django import forms
+from .models import Product, Size
+
+class ProductForm(forms.ModelForm):
+    # Using a ModelChoiceField to select sizes from the database
+    size = forms.ModelChoiceField(queryset=Size.objects.all(), required=True, widget=forms.RadioSelect)
+
+    class Meta:
+        model = Product
+        fields = ['size']  # You can add more fields as needed
 
 class CustomUserCreationForm(UserCreationForm):
    class Meta:
