@@ -1,0 +1,73 @@
+<!-- Cart Page Header -->
+<div class="py-14 px-4 md:px-6 2xl:px-20 2xl:container 2xl:mx-auto">
+  <div class="flex justify-start item-start space-y-2 flex-col">
+    <h1 class="text-3xl font-semibold leading-9 text-gray-800">Your Cart</h1>
+    <p class="text-lg text-gray-600">Review the items in your cart and proceed to checkout.</p>
+  </div>
+
+  {% if cart_items %}
+    <div class="mt-8 overflow-x-auto bg-white shadow rounded-lg">
+      <table class="min-w-full bg-white border border-gray-200">
+        <thead>
+          <tr>
+            <th class="py-3 px-4 border-b text-left">Product</th>
+            <th class="py-3 px-4 border-b text-left">Quantity</th>
+            <th class="py-3 px-4 border-b text-left">Price</th>
+            <th class="py-3 px-4 border-b text-left">Total</th>
+            <th class="py-3 px-4 border-b text-left">Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in cart_items %}
+            <tr>
+              <td class="py-4 px-4 border-b flex items-center">
+                <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}" class="w-16 h-16 object-cover mr-4 rounded-lg">
+                <span class="text-lg font-semibold text-gray-800">{{ item.product.name }}</span>
+              </td>
+              <td class="py-4 px-4 border-b">
+                <form action="{% url 'add-to-cart' item.product.id %}" method="post" class="flex items-center">
+                  {% csrf_token %}
+                  <button type="submit" name="action" value="decrease" class="bg-gray-200 text-gray-600 px-3 py-1 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                    -
+                  </button>
+                  <input type="number" name="quantity" value="{{ item.quantity }}" class="w-12 text-center border-gray-300 rounded-md mx-2" min="1">
+                  <button type="submit" name="action" value="increase" class="bg-gray-200 text-gray-600 px-3 py-1 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500">
+                    +
+                  </button>
+                </form>
+              </td>
+              <td class="py-4 px-4 border-b text-gray-600">${{ item.product.price }}</td>
+              <td class="py-4 px-4 border-b text-gray-800">${{ item.total_price }}</td>
+              <td class="py-4 px-4 border-b">
+                <form action="{% url 'remove_from_cart' item.product.id %}" method="post">
+                  {% csrf_token %}
+                  <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-500">
+                    Remove
+                  </button>
+                </form>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Cart Summary Section -->
+    <div class="mt-6 flex justify-between items-center">
+      <div class="text-lg text-gray-800">
+        <strong>Total:</strong> <span class="text-2xl font-semibold">${{ cart_total }}</span>
+      </div>
+
+      <div class="flex space-x-4">
+        <a href="" class="bg-gray-800 text-white py-3 px-6 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">Continue Shopping</a>
+        <a href="" class="bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-500">Proceed to Checkout</a>
+      </div>
+    </div>
+
+  {% else %}
+    <div class="mt-8 text-center">
+      <p class="text-xl text-gray-600">Your cart is currently empty. Add items to your cart to proceed.</p>
+      <a href="" class="mt-4 text-blue-600 hover:text-blue-800">Go to Shop</a>
+    </div>
+  {% endif %}
+</div>

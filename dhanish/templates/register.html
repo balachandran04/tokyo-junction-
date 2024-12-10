@@ -1,0 +1,162 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    <div class=" mt-5">
+        <!-- Success or Error Message -->
+        {% if messages %}
+            <div class="alert alert-info" role="alert">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center mb-4">Create an Account</h2>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    
+                    <div class="card p-4 shadow-sm">
+                        <div class="form-group mb-3">
+                            <label for="id_Name">Full Name</label>
+                            {{ form.Name|add_class:"form-control" }}
+                            {% if form.Name.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.Name.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="id_Phone">Phone Number</label>
+                            {{ form.Phone|add_class:"form-control" }}
+                            {% if form.Phone.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.Phone.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="id_Email">Email Address</label>
+                            {{ form.Email|add_class:"form-control" }}
+                            {% if form.Email.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.Email.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="id_Password">Password</label>
+                            {{ form.Password|add_class:"form-control" }}
+                            {% if form.Password.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.Password.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="id_Address">Address</label>
+                            {{ form.Address|add_class:"form-control" }}
+                            {% if form.Address.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.Address.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="id_Profile">Profile Picture</label>
+                            {{ form.Profile|add_class:"form-control" }}
+                            {% if form.Profile.errors %}
+                                <div class="text-danger">
+                                    {% for error in form.Profile.errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-primary w-100">Register</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="text-center mt-3">
+                    <p>Already have an account? <a href="">Login here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+
+body {
+    background-color: #f4f7fc;
+}
+
+.container {
+    max-width: 500px;
+}
+
+.card {
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.card h2 {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.card .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.card .form-group label {
+    font-weight: 600;
+    color: #333;
+}
+
+.card .form-group input {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.card .form-group input:focus {
+    border-color: #0056b3;
+}
+
+.btn {
+    padding: 12px;
+    font-size: 16px;
+}
+
+</style>
+    
+</body>
+</html>
