@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import Product, Cart, CartItem, Order, OrderItem, Address, Wishlist,Category,Size
+#https://sender.zohoinsights.eu/ck1/13ef.4aba358de/1e85d040-da11-11ef-b9df-76699466976f/9cc4f941b105e591ea290946e01ae7d8162e5d80/2?e=8NtWMIXyEFbte0HvDfX1xR%2FKPnPmhQ1GhBzNku9CBJrvkHk8O1gjsGbBpFsiQYiAjLzVR9ZvR0rnNKYOmm5rzuOuDL%2BgyqNs4JmvcYZzrZLD5SdCf8CtDn%2BsgqJl%2FyAqfbGlpWpiu%2FiJnqBegw1NlA%3D%3D
+
 
 # Admin interface for the Product model
 class ProductAdmin(admin.ModelAdmin):
